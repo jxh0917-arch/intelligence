@@ -18,8 +18,11 @@ The system models a simplified planar chameleon tongue with two generalized coor
 |-- data/raw/                     # Coursework CSV data used by the workflow
 |-- docs/
 |   |-- assignment_summary.md      # Summarised task requirements
+|   |-- project_report.md          # Concise academic report
+|   |-- model_selection.md         # Follow-up analysis motivated by feedback
 |   |-- teacher_feedback.md        # Marking feedback and interpretation
 |   `-- original_submission/       # Original submission files kept for provenance
+|-- scripts/compare_mlp_configs.py # Compact architecture comparison
 |-- scripts/run_workflow.py        # End-to-end reproducibility script
 |-- src/chameleon_tongue/          # Importable implementation
 |-- tests/                         # Lightweight validation tests
@@ -41,6 +44,8 @@ For mass estimation, the tongue dynamics are rearranged into a linear regression
 ## Results Context
 
 The marked submission received a final total of `86/100`. The RMSE, catch-probability, and mass-estimation components were assessed as extremely accurate. The main improvement area identified in feedback was the inverse-kinematics model complexity: the MLP achieved high accuracy, but the hidden-layer capacity was larger than necessary, so future work should compare smaller architectures and tune regularisation for generalisation.
+
+The included model-selection script demonstrates this follow-up direction. On one deterministic validation split, a compact `50x50` MLP used `2802` trainable parameters compared with `41202` in the submitted `200x200` model, while improving validation task-space RMSE from `0.006144 m` to `0.004803 m`.
 
 ## Reproduced Metrics
 
@@ -74,6 +79,12 @@ To experiment with a smaller MLP:
 
 ```powershell
 python scripts/run_workflow.py --hidden-layer-sizes 80,80 --max-iter 4000
+```
+
+To compare several model capacities on a validation split:
+
+```powershell
+python scripts/compare_mlp_configs.py
 ```
 
 ## Validation
