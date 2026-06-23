@@ -18,6 +18,8 @@ The system models a simplified planar chameleon tongue with two generalized coor
 |-- data/raw/                     # Coursework CSV data used by the workflow
 |-- docs/
 |   |-- assignment_summary.md      # Summarised task requirements
+|   |-- data_notice.md             # Publication note for coursework data
+|   |-- github_publish_guide.md    # Steps for publishing the local repo
 |   |-- project_report.md          # Concise academic report
 |   |-- model_selection.md         # Follow-up analysis motivated by feedback
 |   |-- teacher_feedback.md        # Marking feedback and interpretation
