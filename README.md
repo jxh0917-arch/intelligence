@@ -25,6 +25,7 @@ The system models a simplified planar chameleon tongue with two generalized coor
 |   |-- teacher_feedback.md        # Marking feedback and interpretation
 |   `-- original_submission/       # Original submission files kept for provenance
 |-- scripts/compare_mlp_configs.py # Compact architecture comparison
+|-- scripts/publish_to_github.ps1  # Helper for pushing to a new GitHub repo
 |-- scripts/run_workflow.py        # End-to-end reproducibility script
 |-- src/chameleon_tongue/          # Importable implementation
 |-- tests/                         # Lightweight validation tests
@@ -87,6 +88,12 @@ To compare several model capacities on a validation split:
 
 ```powershell
 python scripts/compare_mlp_configs.py
+```
+
+To publish after creating an empty GitHub repository:
+
+```powershell
+.\scripts\publish_to_github.ps1 -RepositoryUrl https://github.com/jxh0917-arch/chameleon-tongue-workflow.git
 ```
 
 ## Validation

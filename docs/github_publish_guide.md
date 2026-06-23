@@ -25,6 +25,12 @@ Codex can complete the upload when one of these is available:
 From this directory:
 
 ```powershell
+.\scripts\publish_to_github.ps1 -RepositoryUrl https://github.com/jxh0917-arch/chameleon-tongue-workflow.git
+```
+
+Equivalent raw Git commands:
+
+```powershell
 git remote add origin https://github.com/jxh0917-arch/chameleon-tongue-workflow.git
 git push -u origin main
 ```
