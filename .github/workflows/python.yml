@@ -24,3 +24,9 @@ jobs:
 
       - name: Run tests
         run: pytest -q
+
+      - name: Run end-to-end workflow
+        run: python scripts/run_workflow.py
+
+      - name: Run model comparison
+        run: python scripts/compare_mlp_configs.py

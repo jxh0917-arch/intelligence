@@ -1,6 +1,16 @@
 # Chameleon's Tongue: Inverse Kinematics and Dynamics Estimation
 
+[![Python workflow](https://github.com/jxh0917-arch/intelligence/actions/workflows/python.yml/badge.svg)](https://github.com/jxh0917-arch/intelligence/actions/workflows/python.yml)
+
 This repository presents a reproducible workflow for the chameleon tongue coursework problem from 7CCEMIAA Intelligence and Autonomy. The work combines inverse kinematics learning, task-space evaluation, catch-probability estimation, and linear dynamics parameter identification.
+
+## Quick Links
+
+- [Project report](docs/project_report.md)
+- [Reproducibility guide](docs/reproducibility.md)
+- [Model-selection analysis](docs/model_selection.md)
+- [Presentation notes](docs/presentation_notes.md)
+- [Original submitted code](docs/original_submission/work.py)
 
 ## Project Scope
 
@@ -20,8 +30,10 @@ The system models a simplified planar chameleon tongue with two generalized coor
 |   |-- assignment_summary.md      # Summarised task requirements
 |   |-- data_notice.md             # Publication note for coursework data
 |   |-- github_publish_guide.md    # Steps for publishing the local repo
-|   |-- project_report.md          # Concise academic report
 |   |-- model_selection.md         # Follow-up analysis motivated by feedback
+|   |-- presentation_notes.md      # Short technical presentation notes
+|   |-- project_report.md          # Concise academic report
+|   |-- reproducibility.md         # Verification commands and expected outputs
 |   |-- teacher_feedback.md        # Marking feedback and interpretation
 |   `-- original_submission/       # Original submission files kept for provenance
 |-- scripts/compare_mlp_configs.py # Compact architecture comparison
@@ -43,6 +55,18 @@ For inverse kinematics, the submitted model uses a two-layer MLP with `tanh` act
 For catch probability, each predicted tongue-tip location is compared with its desired insect location. A catch is counted when the Euclidean error is at most `0.01 m`.
 
 For mass estimation, the tongue dynamics are rearranged into a linear regression problem. The two equations of motion are stacked into a single feature vector, and the mass is estimated with a zero-intercept linear model.
+
+## Workflow
+
+```mermaid
+flowchart LR
+    A["CSV data"] --> B["Inverse-kinematics MLP"]
+    B --> C["Predicted configuration q"]
+    C --> D["Forward kinematics"]
+    D --> E["Task-space RMSE and catch probability"]
+    A --> F["Dynamics feature matrix"]
+    F --> G["Linear mass estimation"]
+```
 
 ## Results Context
 
